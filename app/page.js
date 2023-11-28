@@ -1,5 +1,18 @@
+"use client";
 import styles from "./page.module.css";
+import { Canvas } from "@react-three/fiber";
+import { useRef } from "react";
+import RotatingCube from "@/components/RotatingCube";
 
 export default function Home() {
-  return <main className={styles.main}>Lets Start</main>;
+  const myMesh = useRef(null);
+  return (
+    <main className={styles.main}>
+      <Canvas>
+        <ambientLight intensity={0.1} />
+        <directionalLight color="red" position={[0, 0, 5]} />
+        <RotatingCube />
+      </Canvas>
+    </main>
+  );
 }
