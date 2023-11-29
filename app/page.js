@@ -1,8 +1,9 @@
 "use client";
 import styles from "./page.module.css";
 import { Canvas } from "@react-three/fiber";
-import { useRef } from "react";
+import { Suspense, useRef } from "react";
 import RotatingCube from "@/components/RotatingCube";
+import Stickman from "@/components/blenderTest";
 
 export default function Home() {
   const myMesh = useRef(null);
@@ -11,7 +12,9 @@ export default function Home() {
       <Canvas>
         <ambientLight intensity={0.1} />
         <directionalLight color="red" position={[0, 0, 5]} />
-        <RotatingCube />
+        <Suspense fallback={null}>
+          <Stickman />
+        </Suspense>
       </Canvas>
     </main>
   );
